@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_flutter/main.dart';
 
 class MyAppBar extends StatelessWidget {
   MyAppBar({this.title});
@@ -39,57 +40,70 @@ class MyAppBar extends StatelessWidget {
 }
 
 class MyScaffold extends StatelessWidget {
+  var _text;
+  void onClick() {
+    _text = "lylog 打印了";
+    print("lylog 打印了");
+  }
+
   @override
   Widget build(BuildContext context) {
     // Material 是UI呈现的“一张纸”
     return new Material(
       // Column is 垂直方向的线性布局.
-      child: new Column(
+      child: Column(
         children: <Widget>[
           new MyAppBar(
             title: new Text(
               'Example titleExample titleExample titleExample titleExample titleExample title',
-
-              textAlign: TextAlign.center, //文字在布局中的位置 left center...
-              textScaleFactor: 2, //放大倍数
-              softWrap: true, //是否自动换行
-              textDirection: TextDirection.rtl, //文本方向  rtl rtr
-              overflow: TextOverflow.ellipsis, //溢出显示 clip剪裁fade 渐隐ellipsis省略号
+              textAlign: TextAlign.center,
+              //文字在布局中的位置 left center...
+              textScaleFactor: 2,
+              //放大倍数
+              softWrap: true,
+              //是否自动换行
+              textDirection: TextDirection.rtl,
+              //文本方向  rtl rtr
+              overflow: TextOverflow.ellipsis,
+              //溢出显示 clip剪裁fade 渐隐ellipsis省略号
               maxLines: 2, //文本行数
             ),
           ),
           new Expanded(
-            child: new Center(
-              child: new Text(
-                'Hello, world!Hello, world!Hello, world!Hello, world!Hello, world!Hello, world!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  decorationColor: Colors.amber,
-                  height: 1,
-                  //字体离顶部的高度 没得width的
-                  //线的颜色
-                  //lineThrough删除线   overline文字上面显示线   underline文字下面显示线
-                  // decoration: TextDecoration.lineThrough,
-                  //solid实现 double两条 dashed dotted虚线 wavy 波浪线
-                  decorationStyle: TextDecorationStyle.wavy,
-                  //单行字间隔
-                  wordSpacing: 1.0,
-                  //行与行的距离
-                  letterSpacing: 2.0,
-                  //字体颜色
-                  color: Colors.blue,
-                  //组件背景
-                  backgroundColor: Colors.black,
-                  //字体格式
-                  fontFamily: "MicroSoft YaHei",
-                  //字符间的距离
-                  fontStyle: FontStyle.italic,
-                  //斜体
-                  fontWeight: FontWeight.bold,
-                  //字体大小
-                  fontSize: 40,
+            child: GestureDetector(
+              child: new Center(
+                child: new Text(
+                  '$_text',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    decorationColor: Colors.amber,
+                    height: 1,
+                    //字体离顶部的高度 没得width的
+                    //线的颜色
+                    //lineThrough删除线   overline文字上面显示线   underline文字下面显示线
+                    // decoration: TextDecoration.lineThrough,
+                    //solid实现 double两条 dashed dotted虚线 wavy 波浪线
+                    decorationStyle: TextDecorationStyle.wavy,
+                    //单行字间隔
+                    wordSpacing: 1.0,
+                    //行与行的距离
+                    letterSpacing: 2.0,
+                    //字体颜色
+                    color: Colors.blue,
+                    //组件背景
+                    backgroundColor: Colors.black,
+                    //字体格式
+                    fontFamily: "MicroSoft YaHei",
+                    //字符间的距离
+                    fontStyle: FontStyle.italic,
+                    //斜体
+                    fontWeight: FontWeight.bold,
+                    //字体大小
+                    fontSize: 40,
+                  ),
                 ),
               ),
+              onTap: onClick,
             ),
           ),
         ],
@@ -98,9 +112,3 @@ class MyScaffold extends StatelessWidget {
   }
 }
 
-void main() {
-  runApp(new MaterialApp(
-    title: 'My app', // used by the OS task switcher
-    home: new MyScaffold(),
-  ));
-}
