@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter/day_201023.dart';
+import 'package:my_flutter/day_1.dart';
+
+import 'day_2.dart';
 
 void main() {
   runApp(new MaterialApp(
     title: 'My app', // used by the OS task switcher
-    home: new MyScaffold(),
+    home: new Counter(),
   ));
 }
 
